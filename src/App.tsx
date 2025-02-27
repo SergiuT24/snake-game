@@ -7,7 +7,7 @@ const App: React.FC = () => {
 	return (
 
 		<>
-			<h1 className='mb-3'>Snake Game</h1>
+			<h1 className='mb-10 text-center'>Snake Game</h1>
 			<Board gridSize={gridSize} />
 		</>
 	)

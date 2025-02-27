@@ -96,12 +96,11 @@ const Board: React.FC<BoardProps> = ({ gridSize }) => {
 				x: Math.floor(Math.random() * gridSize),
 				y: Math.floor(Math.random() * gridSize),
 			};
-			// Verificam daca marul se afla pe sarpe
 			isOnSnake = currentSnake.some(segment => segment.x === newApple.x && segment.y === newApple.y);
 
-		} while (isOnSnake); // Repetam pana gasim o pozitie libera
+		} while (isOnSnake);
 
-		setApple(newApple); // Setam marul pe o pozitie valida
+		setApple(newApple);
 	};
 
 	const restartGame = () => {
@@ -174,7 +173,7 @@ const Board: React.FC<BoardProps> = ({ gridSize }) => {
 			grid.push(
 				<div
 					key={`${x}-${y}`}
-					className={`cell w-8 h-8 inline-block box-border relative ${isSnake ? 'bg-green-500 border' : isApple ? 'bg-white' : 'bg-white'}`}
+					className={`cell w-6 h-6 inline-block box-border relative ${isSnake ? 'bg-green-500 border' : isApple ? 'bg-white' : 'bg-white'}`}
 				>
 					{isApple && (
 						<img src={appleIcon} alt='Apple' className='absolute inset-0 w-full h-full' />
@@ -186,15 +185,17 @@ const Board: React.FC<BoardProps> = ({ gridSize }) => {
 
 
 	return (
-		<div>
-			<div className='text-xl text-green-500'>Score: {score}</div>
-			<button
-				onClick={restartGame}
-				className='my-2'
-			>
-				Restart Game
-			</button>
-			<div className="text-lg text-center text-gray-500 mb-4">High Score: {highScore}</div>
+		<div className='flex gap-32'>
+			<div>
+				<div className='text-xl text-green-500'>Score: {score}</div>
+				<button
+					onClick={restartGame}
+					className='my-2'
+				>
+					Restart Game
+				</button>
+				<div className="text-lg text-center text-gray-500 mb-4">High Score: {highScore}</div>
+			</div>
 			{gameOver && (<div className='text-red-500 text-2xl font-bold mb-4'>Game Over!</div>)}
 			<div className='border-2 border-black' style={{ display: 'grid', gridTemplateColumns: `repeat(${gridSize}, 1fr)` }}>
 				{grid}
