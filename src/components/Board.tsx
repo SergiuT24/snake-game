@@ -12,7 +12,7 @@ const Board: React.FC<BoardProps> = ({ gridSize }) => {
 		{ x: 8, y: 9 },
 	]);
 
-	const [speed, setSpeed] = useState(200);
+	const speed = 200;
 
 	const [apple, setApple] = useState<{ x: number; y: number }>({
 		x: Math.floor(Math.random() * gridSize),
